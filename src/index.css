@@ -1,0 +1,73 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-navy: #0b2d4b;
+  --color-navy-deep: #071e32;
+  --color-forest: #087a4b;
+  --color-hope: #78d66b;
+  --color-teal: #167c80;
+  --color-warm-white: #fcfdfb;
+  --color-mint: #eff7f2;
+  --color-body: #425466;
+  --color-muted: #64748b;
+  --color-line: #e4ece8;
+
+  --font-display: 'DM Serif Display', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', 'DM Sans', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-body);
+    background-color: var(--color-warm-white);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-navy);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.45s ease,
+      transform 0.45s ease;
+  }
+
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
